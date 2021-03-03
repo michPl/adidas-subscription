@@ -9,7 +9,7 @@ class SubscriptionController {
     try {
       const {email, birth, flag, first_name: firstName, gender} = req.body as ISubscription;
 
-      if (await Subscription.findOne({where: {email}})) throw new JsonError(errors.alreadyExists);
+      if (await Subscription.findOne({where: {email}, raw: true})) throw new JsonError(errors.alreadyExists);
 
       const subscriptions = new Subscription({email, birth, flag, firstName, gender});
       await subscriptions.save();
@@ -28,7 +28,8 @@ class SubscriptionController {
       const subscriptions = await Subscription
         .scope([{method: ['page', page, pageSize]}])
         .findAll({
-          order: [['id', 'DESC']]
+          order: [['id', 'DESC']],
+          raw: true
         });
 
       res.json({subscriptions});
@@ -65,7 +66,7 @@ class SubscriptionController {
 
   public async findByEmail(req: IRequest, res: IResponse, next: INextFunction): Promise<void> {
     try {
-      const subscription = await Subscription.findOne({where: {email: req.query.email}});
+      const subscription = await Subscription.findOne({where: {email: req.query.email}, raw: true});
 
       res.json({subscription});
     } catch (error) {
