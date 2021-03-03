@@ -17,7 +17,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.get('/', (req, res) => res.status(200).send({title: 'Public API'}));
+app.get('/', (req, res) => res.status(200).send({title: 'Subscription API'}));
 
 app.use('/subscriptions', subscriptionRoutes(Router));
 

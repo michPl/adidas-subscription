@@ -1,8 +1,8 @@
-# Public part
-Backend for Frontend to be used by UI
+# Subscription part
+Microservice implementing subscription logic
 
 ## Install
-1. git clone git@github.com:michPl/adidas-public.git
+1. git clone git@github.com:michPl/adidas-subscription.git
 2. npm ci
 3. docker-compose up
 4. create environments from EXAMPLE_ENV.env
