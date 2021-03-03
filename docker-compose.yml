@@ -1,0 +1,15 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:12-alpine
+    container_name: adidas_postgres
+    restart: unless-stopped
+    ports:
+      - "5557:5432"
+    environment:
+    - DEBUG=false
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=
+    - POSTGRES_DB=adidas
+    volumes:
+      - ../db:/var/lib/postgresql
