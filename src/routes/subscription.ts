@@ -6,6 +6,9 @@ import controller from '../controllers/Subscription';
 export default (Router: () => IRouter): IRouter => {
   const router: IRouter = Router();
 
+  /**
+   * Add subscription
+   */
   router.post('/',
     [
       body('email').isEmail(),
@@ -18,6 +21,9 @@ export default (Router: () => IRouter): IRouter => {
     controller.store
   );
 
+  /**
+   * Get subscriptions list
+   */
   router.get('/',
     [
       query('page').optional({checkFalsy: true}).isInt(),
@@ -27,18 +33,27 @@ export default (Router: () => IRouter): IRouter => {
     controller.index
   );
 
+  /**
+   * Find subscription by email
+   */
   router.get('/find',
     [query('email').isEmail()],
     validate,
     controller.findByEmail
   );
 
+  /**
+   * Get subscription by id
+   */
   router.get('/:id',
     [param('id').isInt({min: 1})],
     validate,
     controller.details
   );
 
+  /**
+   * Delete subscription
+   */
   router.delete('/:id',
     [param('id').isInt({min: 1})],
     validate,

@@ -1,5 +1,6 @@
 # Subscription part
 Microservice implementing subscription logic
+The service allows you to create, view and delete a subscription. And also to send messages to subscription addresses
 
 ## Install
 1. git clone git@github.com:michPl/adidas-subscription.git
@@ -16,4 +17,4 @@ Microservice implementing subscription logic
 3. GET {HOSTNAME}/subscriptions/find  - find single subscription by email
 4. POST {HOSTNAME}/subscriptions      - create subscription
 5. DEL {HOSTNAME}/subscriptions       - remove subscription
-
+6. POST {HOSTNAME}/mailing            - send dispatch

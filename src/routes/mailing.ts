@@ -6,6 +6,9 @@ import controller from '../controllers/Mailing';
 export default (Router: () => IRouter): IRouter => {
   const router: IRouter = Router();
 
+  /**
+   * Send dispatch
+   */
   router.post('/',
     [
       body('title').isLength({max: 200}).trim(),
